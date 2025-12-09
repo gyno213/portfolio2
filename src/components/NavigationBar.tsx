@@ -102,7 +102,8 @@ export function NavigationBar({ language, onLanguageChange }: NavigationBarProps
           >
             <span className="font-semibold flex items-center gap-1">
               <ImageWithFallback
-                src="/images/logo.png"
+                // @ts-ignore - BASE_URL is provided by Vite
+                src={`${import.meta.env.BASE_URL}images/logo.png`}
                 alt="TA Logo"
                 className="w-auto"
                 style={{ height: '35px' }}

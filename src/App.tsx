@@ -22,6 +22,15 @@ import {
 export default function App() {
   const [language, setLanguage] = useState<"en" | "de">("en");
 
+  // Helper function to get correct image path for GitHub Pages
+  const getImagePath = (path: string) => {
+    // Remove leading slash if present
+    const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+    // Use import.meta.env.BASE_URL which Vite provides (includes trailing slash)
+    // @ts-ignore - BASE_URL is provided by Vite
+    return `${import.meta.env.BASE_URL}${cleanPath}`;
+  };
+
   const translations = {
     en: {
       hero: {
@@ -401,7 +410,7 @@ export default function App() {
             <div className="lg:col-span-1 flex justify-center">
               <div className="w-80 h-80 rounded-2xl overflow-hidden border-4 shadow-xl bg-white" style={{ borderColor: '#CADCFC' }}>
                 <ImageWithFallback
-                  src="/images/meinbild.png"
+                  src={getImagePath("/images/meinbild.png")}
                   alt="Portrait of Trang Anh Nguyen"
                   className="w-full h-full object-cover"
                 />
@@ -475,7 +484,7 @@ export default function App() {
               title={t.projects.healthHub.title}
               role={t.projects.healthHub.role}
               preview={t.projects.healthHub.preview}
-              imageUrl="/images/wattpad/titelbildwattpad.png"
+              imageUrl={getImagePath("/images/wattpad/titelbildwattpad.png")}
               technologies={t.projects.healthHub.technologies}
               onReadMore={() => setSelectedProject("healthHub")}
               readMoreText={t.projects.readMore}
@@ -484,7 +493,7 @@ export default function App() {
               title={t.projects.ecoShop.title}
               role={t.projects.ecoShop.role}
               preview={t.projects.ecoShop.preview}
-              imageUrl="/images/remy/remytitel.jpg"
+              imageUrl={getImagePath("/images/remy/remytitel.jpg")}
               technologies={t.projects.ecoShop.technologies}
               onReadMore={() => setSelectedProject("ecoShop")}
               readMoreText={t.projects.readMore}
@@ -493,7 +502,7 @@ export default function App() {
               title={t.projects.taskFlow.title}
               role={t.projects.taskFlow.role}
               preview={t.projects.taskFlow.preview}
-              imageUrl="/images/melodiekreis/melodietitel.png"
+              imageUrl={getImagePath("/images/melodiekreis/melodietitel.png")}
               technologies={t.projects.taskFlow.technologies}
               onReadMore={() => setSelectedProject("taskFlow")}
               readMoreText={t.projects.readMore}
@@ -502,7 +511,7 @@ export default function App() {
               title={t.projects.learnGrow.title}
               role={t.projects.learnGrow.role}
               preview={t.projects.learnGrow.preview}
-              imageUrl="/images/quataer/quataertitel.png"
+              imageUrl={getImagePath("/images/quataer/quataertitel.png")}
               technologies={t.projects.learnGrow.technologies}
               onReadMore={() => setSelectedProject("learnGrow")}
               readMoreText={t.projects.readMore}
@@ -542,7 +551,7 @@ export default function App() {
                         "/images/wattpad/prozess10.jpeg",
                         "/images/wattpad/prozess11.jpeg",
                         "/images/wattpad/prozess12.jpeg",
-                      ]}
+                      ].map(getImagePath)}
                       finalImages={[
                         "/images/wattpad/ergebnis1.jpeg",
                         "/images/wattpad/ergebnis2.jpeg",
@@ -550,7 +559,7 @@ export default function App() {
                         "/images/wattpad/ergebnis5.jpeg",
                         "/images/wattpad/ergebnis6.jpeg",
                         "/images/wattpad/ergebnis7.jpeg",
-                      ]}
+                      ].map(getImagePath)}
                       videos={["https://www.youtube.com/watch?v=hPfvFZl_5PY"]}
                       results={t.projects.healthHub.results}
                       reflection={t.projects.healthHub.reflection}
@@ -571,7 +580,7 @@ export default function App() {
                         "/images/remy/rp2.png",
                         "/images/remy/rp3.jpeg",
                         "/images/remy/rp4.png",
-                      ]}
+                      ].map(getImagePath)}
                       finalImages={[
                         "/images/remy/re1.jpeg",
                         "/images/remy/re2.jpeg",
@@ -581,7 +590,7 @@ export default function App() {
                         "/images/remy/re6.jpeg",
                         "/images/remy/re7.jpeg",
                         "/images/remy/re8.jpeg",
-                      ]}
+                      ].map(getImagePath)}
                       videos={["https://www.youtube.com/watch?v=MFNPUndDFcU"]}
                       results={t.projects.ecoShop.results}
                       reflection={t.projects.ecoShop.reflection}
@@ -608,11 +617,11 @@ export default function App() {
                         "/images/melodiekreis/mp8.png",
                         "/images/melodiekreis/mp9.png",
                         "/images/melodiekreis/mp10.png",
-                      ]}
+                      ].map(getImagePath)}
                       finalImages={[
                         "/images/melodiekreis/me1.png",
                         "/images/melodiekreis/me2.png",
-                      ]}
+                      ].map(getImagePath)}
                       results={t.projects.taskFlow.results}
                       reflection={t.projects.taskFlow.reflection}
                       role={t.projects.taskFlow.role}
@@ -640,7 +649,7 @@ export default function App() {
                         "/images/quataer/qp10.png",
                         "/images/quataer/qp11.jpeg",
                         "/images/quataer/qp12.png",
-                      ]}
+                      ].map(getImagePath)}
                       finalImages={[
                         "/images/quataer/qe1.png",
                         "/images/quataer/qe2.png",
@@ -648,7 +657,7 @@ export default function App() {
                         "/images/quataer/qe4.png",
                         "/images/quataer/qe5.png",
                         "/images/quataer/qe6.png",
-                      ]}
+                      ].map(getImagePath)}
                       videos={["https://www.youtube.com/watch?v=xtrcQ4XqOFI"]}
                       results={t.projects.learnGrow.results}
                       reflection={t.projects.learnGrow.reflection}
@@ -676,7 +685,7 @@ export default function App() {
             <WorkInProgressCard
               title={t.wip.project1.title}
               description={t.wip.project1.description}
-              imageUrl="/images/expnate.png"
+              imageUrl={getImagePath("/images/expnate.png")}
               technologies={t.wip.project1.technologies}
               expectedCompletion={t.wip.project1.expectedCompletion}
               progress={t.wip.project1.progress}
@@ -690,7 +699,7 @@ export default function App() {
             <WorkInProgressCard
               title={t.wip.project2.title}
               description={t.wip.project2.description}
-              imageUrl="/images/mobbing.png"
+              imageUrl={getImagePath("/images/mobbing.png")}
               technologies={t.wip.project2.technologies}
               expectedCompletion={t.wip.project2.expectedCompletion}
               progress={t.wip.project2.progress}
